@@ -7,9 +7,9 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./image.component.css'],
 })
 export class ImageComponent implements OnInit {
-  addImageForm: FormGroup;
+  // addImageForm: FormGroup;
 
   ngOnInit() {
-    this.addImageForm = new FormGroup('');
+    // this.addImageForm = new FormGroup('');
   }
 }
