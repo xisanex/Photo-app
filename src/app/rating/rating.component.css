@@ -1,0 +1,9 @@
+img {
+  height: 300px;
+  width: 350px;
+  object-fit: cover;
+}
+
+p {
+  font-size: 30px;
+}
