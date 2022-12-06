@@ -1,21 +1,68 @@
 <div class="container">
-  <form>
+  <form [formGroup]="addImageForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="photoTitle" class="form-label">Photo Title</label>
-      <input type="text" class="form-control" id="photoTitle" />
+      <input
+        type="text"
+        class="form-control"
+        id="photoTitle"
+        formControlName="photoTitle"
+      />
+      <span
+        *ngIf="
+          !addImageForm.get('photoTitle')!.valid &&
+          addImageForm.get('photoTitle')!.touched
+        "
+        >Photo Title is Required!</span
+      >
     </div>
     <div class="mb-3">
       <label for="author" class="form-label">Author</label>
-      <input type="text" class="form-control" id="author" />
+      <input
+        type="text"
+        class="form-control"
+        id="author"
+        formControlName="author"
+      />
+      <span
+        *ngIf="
+          !addImageForm.get('author')!.valid &&
+          addImageForm.get('author')!.touched
+        "
+        >Author is Required!</span
+      >
     </div>
     <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
+      <!-- <label for="description" class="form-label">Description</label> -->
       <!-- <textarea type="text" id="description" class="form-control"> -->
     </div>
     <div class="mb-3">
       <label for="imagePath" class="form-label">Image URL</label>
-      <input type="text" class="form-control" id="imagePath" />
+      <input
+        type="text"
+        class="form-control"
+        id="imagePath"
+        formControlName="imagePath"
+      />
+      <span
+        *ngIf="
+          !addImageForm.get('imagePath')!.valid &&
+          addImageForm.get('imagePath')!.touched
+        "
+        >Image Path is Required!</span
+      >
     </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- <img [src]="imagePath.value" class="img-responsive" /> -->
+      </div>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!addImageForm.valid"
+    >
+      Submit
+    </button>
   </form>
 </div>

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddImageFormService, ImageData } from './add-image-form.service';
+interface FormGroupType {
+  photoTitle: FormControl<string | null>;
+  author: FormControl<string | null>;
+  imagePath: FormControl<string | null>;
+}
 
 @Component({
   selector: 'app-image',
@@ -7,9 +13,20 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./image.component.css'],
 })
 export class ImageComponent implements OnInit {
-  // addImageForm: FormGroup;
+  addImageForm: FormGroup<FormGroupType> = new FormGroup<FormGroupType>({
+    photoTitle: new FormControl(null, Validators.required),
+    author: new FormControl(null, Validators.required),
+    imagePath: new FormControl(null, Validators.required),
+  });
 
-  ngOnInit() {
-    // this.addImageForm = new FormGroup('');
+  constructor(private addImageFormService: AddImageFormService) {}
+
+  ngOnInit() {}
+
+  onSubmit() {
+    this.addImageFormService.images.push(this.addImageForm.value as ImageData);
+    this.addImageForm.reset();
+
+    console.log(this.addImageFormService.images);
   }
 }

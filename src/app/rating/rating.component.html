@@ -28,31 +28,16 @@
   </div>
 </div>
 <div class="container-sm">
-  <p>All Photos</p>
-</div>
-<div class="container">
-  <div class="row justify-content-around">
-    <div class="col-sm">
-      <img
-        src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_2x1.jpg"
-        alt=""
-        class="img-fluid"
-      />
-      <p>*****</p>
-    </div>
-    <div class="col-sm">
-      <img
-        src="https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/cat-217679.jpg?h=c4ed616d&itok=3qHaqQ56"
-        alt=""
-        class="img-fluid"
-      />
-    </div>
-    <div class="col-sm">
-      <img
-        src="https://media.wired.com/photos/5e1e646743940d0008009167/master/pass/Science_Cats-84873657.jpg"
-        alt=""
-        class="img-fluid"
-      />
+  <button class="btn btn-primary" type="button" (click)="onAddImage()">
+    All Photos
+  </button>
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-sm" *ngFor="let img of images; let i = index">
+        <img src="{{ img.imagePath }}" alt="" class="img-fluid" />
+        <p>Title: {{ img.photoTitle }}</p>
+        <p>Autor: {{ img.author }}</p>
+      </div>
     </div>
   </div>
 </div>
