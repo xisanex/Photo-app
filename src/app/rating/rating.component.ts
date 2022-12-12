@@ -1,4 +1,4 @@
-import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 import { AddImageFormService } from '../image/add-image-form.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class RatingComponent {
   photo: string | undefined;
 
 
-  @ViewChildren('ref') buttons!: QueryList<any>;
+  stars: number[] = [1,2,3,4,5];
+  selectedValue:number = 0;
 
   constructor(private addImageFormService: AddImageFormService) {}
   images = this.addImageFormService.images;
@@ -22,13 +23,7 @@ export class RatingComponent {
     this.photo = this.addImageFormService.images[0].imagePath;
   }
 
-  onAddClass(event: any) {
-    const btnId: string = (event.target as Element).id;
-    console.log( btnId)
-    this.buttons.forEach((button: ElementRef)=>{
-      console.log( button.nativeElement.id)
-      if(button.nativeElement.id === btnId) {
-          event.target.classList.toggle('fa-solid')
-      }})
+  countStar(star:number){
+    this.selectedValue = star;
   }
 }

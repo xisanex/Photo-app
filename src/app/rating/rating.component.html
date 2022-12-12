@@ -9,9 +9,11 @@
         alt=""
         class="img-fluid"
       />
-        <i  #ref *ngFor="let item of [1,2,3,4,5]" [id]="item" (click)="onAddClass($event)"
-          class="fa-star fa-regular"
-       
+      
+        <i *ngFor="let star of stars"
+        class="fa-star fa-regular"
+        [ngClass]="{'fa-solid': (star <= selectedValue)}"
+        (click)="countStar(star)"
         ></i>
     </div>
     <div class="col-sm">
@@ -20,10 +22,7 @@
         alt=""
         class="img-fluid"
       />
-      <i  #ref *ngFor="let item of [1,2,3,4,5]" [id]="item" (click)="onAddClass($event)"
-          class="fa-star fa-regular"
-       
-        ></i>
+      
     </div>
     <div class="col-sm">
       <img
@@ -44,10 +43,12 @@
         <img src="{{ img.imagePath }}" alt="" class="img-fluid" />
         <p>Title: {{ img.photoTitle }}</p>
         <p>Autor: {{ img.author }}</p>
-        <i  #ref *ngFor="let item of [1,2,3,4,5]" [id]="item" (click)="onAddClass($event)"
-          class="fa-star fa-regular"
-       
+        <i *ngFor="let star of stars; let i=index"
+        class="fa-star fa-regular"
+        [ngClass]="{'fa-solid': (star <= selectedValue)}"
+        (click)="countStar(star)"
         ></i>
+        
       </div>
     </div>
   </div>
