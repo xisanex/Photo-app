@@ -4,6 +4,7 @@ import { AddImageFormService, ImageData } from './add-image-form.service';
 interface FormGroupType {
   photoTitle: FormControl<string | null>;
   author: FormControl<string | null>;
+  // description: FormControl<string | null>
   imagePath: FormControl<string | null>;
 }
 
@@ -16,6 +17,7 @@ export class ImageComponent implements OnInit {
   addImageForm: FormGroup<FormGroupType> = new FormGroup<FormGroupType>({
     photoTitle: new FormControl(null, Validators.required),
     author: new FormControl(null, Validators.required),
+    // description: new FormControl(null),
     imagePath: new FormControl(null, Validators.required),
   });
 

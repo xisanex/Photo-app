@@ -9,36 +9,10 @@
         alt=""
         class="img-fluid"
       />
-      <button id="1" #ref (click)="onAddClass($event)">
-        <i
-          class="fa-star"
-          [ngClass]="{ 'fa-regular': !addClass, 'fa-solid': addClass }"
+        <i  #ref *ngFor="let item of [1,2,3,4,5]" [id]="item" (click)="onAddClass($event)"
+          class="fa-star fa-regular"
+       
         ></i>
-      </button>
-      <button id="2" #ref (click)="onAddClass($event)">
-        <i
-          class="fa-star"
-          [ngClass]="{ 'fa-regular': !addClass, 'fa-solid': addClass }"
-        ></i>
-      </button>
-      <button id="3" #ref (click)="onAddClass($event)">
-        <i
-          class="fa-star"
-          [ngClass]="{ 'fa-regular': !addClass, 'fa-solid': addClass }"
-        ></i>
-      </button>
-      <button id="4" #ref (click)="onAddClass($event)">
-        <i
-          class="fa-star"
-          [ngClass]="{ 'fa-regular': !addClass, 'fa-solid': addClass }"
-        ></i>
-      </button>
-      <button id="5" #ref (click)="onAddClass($event)">
-        <i
-          class="fa-star"
-          [ngClass]="{ 'fa-regular': !addClass, 'fa-solid': addClass }"
-        ></i>
-      </button>
     </div>
     <div class="col-sm">
       <img
@@ -46,6 +20,10 @@
         alt=""
         class="img-fluid"
       />
+      <i  #ref *ngFor="let item of [1,2,3,4,5]" [id]="item" (click)="onAddClass($event)"
+          class="fa-star fa-regular"
+       
+        ></i>
     </div>
     <div class="col-sm">
       <img
@@ -66,6 +44,10 @@
         <img src="{{ img.imagePath }}" alt="" class="img-fluid" />
         <p>Title: {{ img.photoTitle }}</p>
         <p>Autor: {{ img.author }}</p>
+        <i  #ref *ngFor="let item of [1,2,3,4,5]" [id]="item" (click)="onAddClass($event)"
+          class="fa-star fa-regular"
+       
+        ></i>
       </div>
     </div>
   </div>

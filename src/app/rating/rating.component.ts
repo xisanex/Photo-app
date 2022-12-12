@@ -1,4 +1,4 @@
-import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AddImageFormService } from '../image/add-image-form.service';
 
 @Component({
@@ -10,9 +10,9 @@ export class RatingComponent {
   title: string | undefined;
   author: string | undefined;
   photo: string | undefined;
-  addClass: boolean = false;
 
-  // @ViewChildren('ref') children: QueryList<any>;
+
+  @ViewChildren('ref') buttons!: QueryList<any>;
 
   constructor(private addImageFormService: AddImageFormService) {}
   images = this.addImageFormService.images;
@@ -22,9 +22,13 @@ export class RatingComponent {
     this.photo = this.addImageFormService.images[0].imagePath;
   }
 
-  onAddClass(event: Event) {
-    // this.addClass = !this.addClass;
-    console.log(event.target);
+  onAddClass(event: any) {
     const btnId: string = (event.target as Element).id;
+    console.log( btnId)
+    this.buttons.forEach((button: ElementRef)=>{
+      console.log( button.nativeElement.id)
+      if(button.nativeElement.id === btnId) {
+          event.target.classList.toggle('fa-solid')
+      }})
   }
 }
