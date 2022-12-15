@@ -4,6 +4,9 @@ export interface ImageData {
   photoTitle: string;
   author: string;
   imagePath: string;
+  description:string;
+  rating:any;
+
 }
 
 @Injectable({
