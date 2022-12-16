@@ -4,14 +4,29 @@ export interface ImageData {
   photoTitle: string;
   author: string;
   imagePath: string;
-  description:string;
-  rating:any;
-
+  description?: string;
+  rating?: number;
+  date: Date;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddImageFormService {
-  public images: ImageData[] = [];
+  public images: ImageData[] = [
+    {
+      photoTitle: 'Kitku',
+      author: 'kulka',
+      imagePath:
+        'https://www.fitmin.pl/data/original/filemanager/Nowo%C5%9Bci%20PL/czy-koty-maja-sny.jpg',
+      date: new Date(),
+    },
+    {
+      photoTitle: 'Piotrk',
+      author: 'słodki jak poziomki',
+      imagePath:
+        'https://www.fitmin.pl/data/original/filemanager/Nowo%C5%9Bci%20PL/czy-koty-maja-sny.jpg',
+      date: new Date(),
+    },
+  ];
 }
