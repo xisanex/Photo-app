@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddImageFormService, ImageData } from './add-image-form.service';
 interface FormGroupType {
   photoTitle: FormControl<string | null>;
   author: FormControl<string | null>;
-  description: FormControl<string | null>
+  description: FormControl<string | null>;
   imagePath: FormControl<string | null>;
 }
 
@@ -21,12 +22,22 @@ export class ImageComponent implements OnInit {
     imagePath: new FormControl(null, Validators.required),
   });
 
-  constructor(private addImageFormService: AddImageFormService) {}
+  constructor(
+    private addImageFormService: AddImageFormService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {}
 
   onSubmit() {
-    this.addImageFormService.images.push(this.addImageForm.value as ImageData);
+    const image: ImageData = {
+      ...(this.addImageForm.value as ImageData),
+      rating: 0,
+      date: new Date(),
+    };
+    this.addImageFormService.images.push(image);
     this.addImageForm.reset();
+    this.router.navigate(['/rating'], { relativeTo: this.route });
   }
 }

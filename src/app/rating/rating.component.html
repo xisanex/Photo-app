@@ -1,5 +1,10 @@
 <div class="container-sm">
-  <p>Top Ranking</p>
+  <p>Photos</p>
+  <ul class="list-group">
+    Sort by:
+    <li (click)="onSortByTopRated()" style="cursor: pointer">Top rated</li>
+    <li (click)="onSortByDate()">Data upload</li>
+  </ul>
 </div>
 <div class="container">
   <div class="row justify-content-around"></div>

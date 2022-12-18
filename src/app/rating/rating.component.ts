@@ -20,4 +20,14 @@ export class RatingComponent implements DoCheck {
     console.log(i);
     this.addImageFormService.images[i].rating = star;
   }
+
+  onSortByTopRated() {
+    this.addImageFormService.images.sort((a, b) => b.rating - a.rating);
+  }
+
+  onSortByDate() {
+    this.addImageFormService.images.sort(
+      (a, b) => b.date.getTime() - a.date.getTime()
+    );
+  }
 }

@@ -5,7 +5,7 @@ export interface ImageData {
   author: string;
   imagePath: string;
   description?: string;
-  rating?: number;
+  rating: number;
   date: Date;
 }
 
@@ -20,6 +20,7 @@ export class AddImageFormService {
       imagePath:
         'https://www.fitmin.pl/data/original/filemanager/Nowo%C5%9Bci%20PL/czy-koty-maja-sny.jpg',
       date: new Date(),
+      rating: 0,
     },
     {
       photoTitle: 'Piotrk',
@@ -27,6 +28,7 @@ export class AddImageFormService {
       imagePath:
         'https://www.fitmin.pl/data/original/filemanager/Nowo%C5%9Bci%20PL/czy-koty-maja-sny.jpg',
       date: new Date(),
+      rating: 0,
     },
   ];
 }
