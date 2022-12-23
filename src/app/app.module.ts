@@ -9,6 +9,8 @@ import { RatingComponent } from './rating/rating.component';
 import { AboutmeContactComponent } from './aboutme-contact/aboutme-contact.component';
 import { ImageComponent } from './image/image.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: '',
