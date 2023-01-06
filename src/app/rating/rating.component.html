@@ -7,18 +7,20 @@
   </div>
 </div>
 <div class="container">
-  <div class="row justify-content-around"></div>
+  <div class="flex-container"></div>
 </div>
 <div class="container-sm">
   <div class="container">
     <div class="row justify-content-around">
+      <p *ngIf="loadedPosts.length<1 && !isFetching">No posts available!</p>
       <div
         class="col-sm"
-        *ngFor="let img of addImageFormService.images; let i = index"
+        *ngFor="let img of loadedPosts; let i = index"
       >
         <img src="{{ img.imagePath }}" alt="" class="img-fluid" />
         <p>Title: {{ img.photoTitle }}</p>
         <p>Autor: {{ img.author }}</p>
+        <p>Test:</p>
         <p *ngIf="img.description">Description: {{ img.description }}</p>
         <p>Date upload: {{ img.date | date : 'shortDate' }}</p>
 
@@ -28,6 +30,7 @@
           [ngClass]="{ 'fa-solid': img.rating ? star <= img.rating : 0 }"
           (click)="countStar(star, i)"
         ></i>
+        <p *ngIf="isFetching">Loading...</p>
       </div>
     </div>
   </div>

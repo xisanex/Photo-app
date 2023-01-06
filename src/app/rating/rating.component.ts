@@ -1,37 +1,52 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { AddImageFormService } from '../image/add-image-form.service';
 import { PostsService } from '../posts.service';
+import { ImageData } from '../image/add-image-form.service';
 
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css'],
 })
+
 export class RatingComponent implements DoCheck, OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
+  loadedPosts :ImageData[] =[];
+  isFetching = false;
 
   constructor(public addImageFormService: AddImageFormService,
     private postsService: PostsService) {
-    // console.log(this.addImageFormService.images);
   }
 
   ngDoCheck() {}
 
   ngOnInit(): void {
-    this.postsService.getPosts().subscribe(data=> console.log(data))
+    this.onFetchPosts();
+  }
+
+  onFetchPosts(){
+    this.isFetching = true;
+    this.postsService.getPosts()
+    .subscribe(posts => {
+      this.loadedPosts = posts;
+    })
+    this.isFetching = false;
   }
 
   countStar(star: number, i: number) {
-    this.addImageFormService.images[i].rating = star;
+    console.log(star)
+    this.loadedPosts[i].rating = star;
   }
 
   onSortByTopRated() {
-    this.addImageFormService.images.sort((a, b) => b.rating - a.rating);
+    this.loadedPosts.sort(
+      (a, b) => b.rating - a.rating
+    );
   }
 
   onSortByDate() {
-    this.addImageFormService.images.sort(
-      (a, b) => b.date.getTime() - a.date.getTime()
+    this.loadedPosts.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
   }
 }

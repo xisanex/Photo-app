@@ -7,6 +7,7 @@ export interface ImageData {
   description?: string;
   rating: number;
   date: Date;
+  id?:string;
 }
 
 @Injectable({
