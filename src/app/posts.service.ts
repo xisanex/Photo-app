@@ -32,4 +32,8 @@ export class PostsService {
     })
     );
   }
+
+  deletePhoto(){
+    return this.http.delete('https://photoapp-736be-default-rtdb.firebaseio.com/posts.json');
+  }
 }

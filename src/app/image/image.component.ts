@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { AddImageFormService, ImageData } from './add-image-form.service';
+
 interface FormGroupType {
   photoTitle: FormControl<string | null>;
   author: FormControl<string | null>;
@@ -17,25 +18,29 @@ interface FormGroupType {
   styleUrls: ['./image.component.css'],
 })
 export class ImageComponent implements OnInit {
-
   loadedPosts: ImageData[] = [];
 
   addImageForm: FormGroup<FormGroupType> = new FormGroup<FormGroupType>({
-    photoTitle: new FormControl(null, [Validators.required,Validators.pattern('[a-zA-Z ]*')]),
+    photoTitle: new FormControl(null, [
+      Validators.required,
+      Validators.pattern('[a-zA-Z ]*'),
+    ]),
     author: new FormControl(null, Validators.required),
     description: new FormControl(null),
-    imagePath: new FormControl(null, [Validators.required, Validators.pattern('https?:\/\/.*\.(?:png|jpg)')]),
+    imagePath: new FormControl(null, [
+      Validators.required,
+      Validators.pattern('https?://.*.(?:png|jpg)'),
+    ]),
   });
 
   constructor(
     private addImageFormService: AddImageFormService,
     private router: Router,
     private route: ActivatedRoute,
-    private postsService:PostsService
+    private postsService: PostsService
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
     const image: ImageData = {

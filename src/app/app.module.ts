@@ -10,6 +10,7 @@ import { AboutmeContactComponent } from './aboutme-contact/aboutme-contact.compo
 import { ImageComponent } from './image/image.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     RatingComponent,
     AboutmeContactComponent,
     ImageComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
       { path: 'rating', component: RatingComponent },
       { path: 'aboutMe|contact', component: AboutmeContactComponent },
       { path: 'addimage', component: ImageComponent },
+      {path: 'auth', component: AuthComponent}
     ]),
     ReactiveFormsModule,
   ],

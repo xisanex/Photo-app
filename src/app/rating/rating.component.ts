@@ -13,6 +13,7 @@ export class RatingComponent implements DoCheck, OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
   loadedPosts :ImageData[] =[];
   isFetching = false;
+  error = null;
 
   constructor(public addImageFormService: AddImageFormService,
     private postsService: PostsService) {
@@ -28,9 +29,13 @@ export class RatingComponent implements DoCheck, OnInit {
     this.isFetching = true;
     this.postsService.getPosts()
     .subscribe(posts => {
+      this.isFetching = false;
       this.loadedPosts = posts;
-    })
-    this.isFetching = false;
+    });
+  }
+
+  onClearPhoto(){
+    this.postsService.deletePhoto().subscribe(()=>{ this.loadedPosts=[]})
   }
 
   countStar(star: number, i: number) {
