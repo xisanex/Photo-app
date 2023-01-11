@@ -11,6 +11,7 @@ import { ImageComponent } from './image/image.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './home/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AuthComponent } from './auth/auth.component';
     AboutmeContactComponent,
     ImageComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

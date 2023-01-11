@@ -8,16 +8,16 @@ import { ImageData } from '../image/add-image-form.service';
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css'],
 })
-
 export class RatingComponent implements DoCheck, OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
-  loadedPosts :ImageData[] =[];
+  loadedPosts: ImageData[] = [];
   isFetching = false;
   error = null;
 
-  constructor(public addImageFormService: AddImageFormService,
-    private postsService: PostsService) {
-  }
+  constructor(
+    public addImageFormService: AddImageFormService,
+    private postsService: PostsService
+  ) {}
 
   ngDoCheck() {}
 
@@ -25,28 +25,27 @@ export class RatingComponent implements DoCheck, OnInit {
     this.onFetchPosts();
   }
 
-  onFetchPosts(){
+  onFetchPosts() {
     this.isFetching = true;
-    this.postsService.getPosts()
-    .subscribe(posts => {
+    this.postsService.getPosts().subscribe(posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
     });
   }
 
-  onClearPhoto(){
-    this.postsService.deletePhoto().subscribe(()=>{ this.loadedPosts=[]})
+  onClearPhoto() {
+    this.postsService.deletePhoto().subscribe(() => {
+      this.loadedPosts = [];
+    });
   }
 
   countStar(star: number, i: number) {
-    console.log(star)
+    console.log(star);
     this.loadedPosts[i].rating = star;
   }
 
   onSortByTopRated() {
-    this.loadedPosts.sort(
-      (a, b) => b.rating - a.rating
-    );
+    this.loadedPosts.sort((a, b) => b.rating - a.rating);
   }
 
   onSortByDate() {
