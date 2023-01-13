@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, Subject, tap, throwError } from 'rxjs';
 import { User } from './user.model';
 
@@ -17,7 +18,7 @@ export interface AuthResponseData {
 })
 export class AuthService {
   user = new Subject<User>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -65,6 +66,11 @@ export class AuthService {
       );
   }
 
+  logout() {
+    this.user.next(null!);
+    this.router.navigate(['/auth']);
+  }
+
   private handleAuthentication(
     email: string,
     userId: string,
@@ -89,7 +95,7 @@ export class AuthService {
         errorMessage = 'Wrong email';
         break;
       case 'INVALID_PASSWORD':
-        errorMessage = 'Wrong password';
+        errorMessage = 'W  rong password';
         break;
     }
     return throwError(errorMessage);
