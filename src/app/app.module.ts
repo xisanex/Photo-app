@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { RouterModule } from '@angular/router';
+
 import { RatingComponent } from './rating/rating.component';
 import { AboutmeContactComponent } from './aboutme-contact/aboutme-contact.component';
 import { ImageComponent } from './image/image.component';
@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './home/loading-spinner/loading-spinner.component';
-
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,18 +28,8 @@ import { LoadingSpinnerComponent } from './home/loading-spinner/loading-spinner.
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: HomeComponent,
-      },
-
-      { path: 'rating', component: RatingComponent },
-      { path: 'aboutMe|contact', component: AboutmeContactComponent },
-      { path: 'addimage', component: ImageComponent },
-      {path: 'auth', component: AuthComponent}
-    ]),
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
