@@ -138,7 +138,7 @@ export class AuthService {
         errorMessage = 'Wrong email';
         break;
       case 'INVALID_PASSWORD':
-        errorMessage = 'W  rong password';
+        errorMessage = 'Wrong password';
         break;
     }
     return throwError(errorMessage);

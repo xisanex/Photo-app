@@ -1,3 +1,12 @@
 /* .gradient {
   background: linear-gradient(180deg, #ae8ba1 0%, #f2ecb6 100%);
 } */
+
+.center {
+  margin: 0 auto;
+}
+.user-icon {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 25px auto 10px auto;
+}
